@@ -1,3 +1,5 @@
+
+
 /*
 ===================================================================
 Node.js & npm Lab — CLI Calculator
@@ -9,7 +11,7 @@ LAB CREATION INSTRUCTIONS
 
 1. Create a folder name it as utils.
 2. Inside the utils folder create an operation.js file and parser.js.
-3. In the oerpation.js file create the following functions:
+3. In the operation.js file create the following functions:
 
     - Note: you will write the code inside the return statement's curly braces.
 
@@ -212,4 +214,34 @@ After completing all TODOs, test your calculator:
   Expected output: Invalid operation. Use: add, subtract, multiply, or divide
 
 */
+const _ = require("lodash");
+const { add, subtract, multiply, divide } = require("./utils/operation.js");
+const { parseNumbers, isValidOperation } = require("./utils/parser.js");
+const operation = process.argv[2];
+const numbers = process.argv.slice(3);
 
+if (!isValidOperation(operation)) {
+  console.log("Invalid operation. Use: add, subtract, multiply, or divide");
+  process.exit();
+}
+
+const nums = parseNumbers(numbers);
+
+let result;
+
+switch (operation) {
+  case "add":
+    result = add(nums);
+    break;
+  case "subtract":
+    result = subtract(nums);
+    break;
+  case "multiply":
+    result = multiply(nums);
+    break;
+  case "divide":
+    result = divide(nums);
+    break;
+}
+
+console.log(`Result: ${result}`);
