@@ -1,13 +1,10 @@
-const _ = require("lodash");
+import _ from "lodash";
 
-function parseNumbers(input) {
+export function parseNumbers(input) {
   const numbers = _.map(input, (str) => Number(str));
-  return _.compact(numbers);
+  return numbers.filter(num => !isNaN(num));
 }
 
-function isValidOperation(operation) {
-  const validOps = ["add", "subtract", "multiply", "divide"];
-  return _.includes(validOps, operation);
+export function isValidOperation(operation) {
+  return _.includes(["add", "subtract", "multiply", "divide"], operation);
 }
-
-module.exports = { parseNumbers, isValidOperation };

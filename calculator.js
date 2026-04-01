@@ -214,9 +214,12 @@ After completing all TODOs, test your calculator:
   Expected output: Invalid operation. Use: add, subtract, multiply, or divide
 
 */
-const _ = require("lodash");
-const { add, subtract, multiply, divide } = require("./utils/operation.js");
-const { parseNumbers, isValidOperation } = require("./utils/parser.js");
+import { add, subtract, multiply, divide } from "./utils/operations.js";
+import { parseNumbers, isValidOperation } from "./utils/parser.js";
+import _ from "lodash";
+//const _ = require("lodash");
+//const { add, subtract, multiply, divide } = require("./utils/operation.js");
+//const { parseNumbers, isValidOperation } = require("./utils/parser.js");
 const operation = process.argv[2];
 const numbers = process.argv.slice(3);
 
